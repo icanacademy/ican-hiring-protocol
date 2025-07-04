@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICAN Hiring Protocol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ICAN Hiring Protocol</h1>
+            <p>Intelligent Coverage Analysis Network • ESL Teacher Recruitment</p>
+        </header>
+
+        <main>
+            <!-- Top Row: Data Input -->
+            <section class="card main-input full-width">
+                <h2>📥 Data Input</h2>
+                <div class="import-section">
+                    <div class="input-group">
+                        <label for="week-date">Week Starting Date:</label>
+                        <input type="date" id="week-date" required>
+                    </div>
+                    <label for="paste-data">Paste your hiring data here (updates dashboard automatically):</label>
+                    <textarea id="paste-data" placeholder="HIRING NEED    #
+8:00:00 AM (4)    4
+10:00:00 AM (4)    4
+1:00:00 PM (4)    2
+3:00:00 PM (4)    3
+5:00:00 PM (1)    -3
+7:00:00 PM (1)    -1"></textarea>
+                    <div class="data-actions">
+                        <button id="clear-data" class="btn secondary">Clear Data</button>
+                        <button id="save-data" class="btn primary">Save to History</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Second Row: Key Metrics -->
+            <div class="metrics-row">
+                <!-- Weekly Summary -->
+                <section class="card summary-card">
+                    <h2>📊 Weekly Summary</h2>
+                    <div class="summary-info">
+                        <p id="week-info">Week: <span id="week-start-display">-</span></p>
+                        <p id="time-slots-count">Slots: <span id="slots-count">0</span></p>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-label">Need:</span>
+                            <span id="total-target" class="stat-value">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Hired:</span>
+                            <span id="total-hired" class="stat-value">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Remaining:</span>
+                            <span id="total-remaining" class="stat-value">0</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hiring Status -->
+                <section class="card status-card">
+                    <h2>🎯 Status</h2>
+                    <div class="status-display" id="status-display">
+                        <div class="status-badge-large" id="status-badge">
+                            <span id="status-icon">❓</span>
+                            <span id="status-text">No Data</span>
+                        </div>
+                        <div class="status-details" id="status-details">
+                            <p>Enter hiring data to see status</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Timeline Urgency -->
+                <section class="card urgency-card">
+                    <h2>⏱️ Timeline</h2>
+                    <div class="urgency-indicator" id="urgency-display">
+                        <p id="urgency-text">Select date to see urgency</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Third Row: Actions -->
+            <div class="actions-row">
+                <!-- Platform Recommendation -->
+                <section class="card platform-card-main">
+                    <h2>📢 Recommended Platform</h2>
+                    <div id="platform-suggestion" class="platform-card">
+                        <h3 id="platform-name">No platform selected</h3>
+                        <p id="platform-cost">Paste hiring data to see recommendation</p>
+                        <div id="platform-details" class="platform-details"></div>
+                    </div>
+                </section>
+
+                <!-- Referral & Emergency -->
+                <section class="card alerts-card">
+                    <h2>🚨 Alerts & Bonuses</h2>
+                    <div class="alert-items">
+                        <div class="alert-item">
+                            <span class="alert-label">Referral Bonus:</span>
+                            <span id="referral-status" class="alert-value">❌</span>
+                        </div>
+                        <div class="alert-item">
+                            <span class="alert-label">Emergency:</span>
+                            <span id="emergency-status" class="alert-value">❌</span>
+                        </div>
+                        <div id="referral-badge" class="badge inactive">Referral: Inactive</div>
+                    </div>
+                    <div id="emergency-checklist" class="checklist hidden">
+                        <h3>Emergency Actions:</h3>
+                        <ul>
+                            <li><input type="checkbox" id="notify-managers"> Notify managers</li>
+                            <li><input type="checkbox" id="prioritize-processing"> Prioritize processing</li>
+                            <li><input type="checkbox" id="repost-jobs"> Re-post jobs</li>
+                            <li><input type="checkbox" id="push-referral"> Push referrals</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom Row: Historical Data -->
+            <section class="card full-width">
+                <h2>📈 Historical Data</h2>
+                <div id="history-table">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Week Start</th>
+                                    <th>Target</th>
+                                    <th>Hired</th>
+                                    <th>Remaining</th>
+                                    <th>Platform</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-tbody">
+                                <!-- Data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
