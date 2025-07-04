@@ -41,6 +41,8 @@ class HiringDashboard {
         this.urgencyText = document.getElementById('urgency-text');
         this.referralBadge = document.getElementById('referral-badge');
         this.emergencyChecklist = document.getElementById('emergency-checklist');
+        this.operationalProtocol = document.getElementById('operational-protocol');
+        this.protocolSteps = document.getElementById('protocol-steps');
         this.historyTbody = document.getElementById('history-tbody');
     }
 
@@ -266,8 +268,11 @@ class HiringDashboard {
         
         if (emergencyActive) {
             this.emergencyChecklist.classList.remove('hidden');
+            this.operationalProtocol.classList.remove('hidden');
+            this.updateOperationalProtocol(days_until_target, remaining);
         } else {
             this.emergencyChecklist.classList.add('hidden');
+            this.operationalProtocol.classList.add('hidden');
         }
         
         // Update platform suggestion using time-based logic
@@ -321,6 +326,7 @@ class HiringDashboard {
         this.referralBadge.textContent = 'Referral: Inactive';
         this.referralBadge.className = 'badge inactive';
         this.emergencyChecklist.classList.add('hidden');
+        this.operationalProtocol.classList.add('hidden');
         this.platformNameH3.textContent = 'No platform selected';
         this.platformCostP.textContent = 'Select date and paste hiring data';
         this.platformDetails.innerHTML = '';
@@ -397,6 +403,117 @@ class HiringDashboard {
             this.urgencyDisplay.classList.add('urgency-high');
             this.urgencyText.textContent = `🔥 OVERDUE: Target week arrived!`;
         }
+    }
+
+    updateOperationalProtocol(daysUntil, remaining) {
+        const protocols = this.getOperationalProtocols(daysUntil, remaining);
+        
+        this.protocolSteps.innerHTML = '';
+        
+        protocols.forEach(protocol => {
+            const stepDiv = document.createElement('div');
+            stepDiv.className = `protocol-step ${protocol.critical ? 'critical' : ''}`;
+            
+            stepDiv.innerHTML = `
+                <div class="step-title">${protocol.title}</div>
+                <div class="step-description">${protocol.description}</div>
+            `;
+            
+            this.protocolSteps.appendChild(stepDiv);
+        });
+    }
+
+    getOperationalProtocols(daysUntil, remaining) {
+        const protocols = [];
+        
+        if (daysUntil <= 0) {
+            // Day of target week - EXTREME measures
+            protocols.push({
+                title: "🚨 IMMEDIATE: Deploy Senior Staff",
+                description: "Steven and management team step in to cover critical classes. All administrative duties redirected.",
+                critical: true
+            });
+            protocols.push({
+                title: "📞 Emergency Teacher Pool",
+                description: "Contact all previous teachers, part-time staff, and retired teachers for immediate availability.",
+                critical: true
+            });
+            protocols.push({
+                title: "📚 Combine Classes",
+                description: "Merge smaller groups, increase class sizes temporarily to reduce teacher requirements.",
+                critical: false
+            });
+        } else if (daysUntil === 1) {
+            // 1 day left - Last resort measures
+            protocols.push({
+                title: "🚨 CRITICAL: Senior Management Deployment",
+                description: "Steven and yourself prepare to teach tomorrow. Clear all administrative schedules.",
+                critical: true
+            });
+            protocols.push({
+                title: "📋 Front Desk Coverage",
+                description: "Administrative staff on standby to cover classes. Prepare lesson plans for non-teaching staff.",
+                critical: true
+            });
+            protocols.push({
+                title: "🔄 Class Restructuring",
+                description: "Finalize class combinations and schedule adjustments to minimize teacher requirements.",
+                critical: false
+            });
+        } else if (daysUntil === 2) {
+            // 2 days left - Deploy front desk
+            protocols.push({
+                title: "👥 Front Desk Teacher Activation",
+                description: "Administrative staff with teaching credentials step in to cover classes. Prepare teaching materials.",
+                critical: true
+            });
+            protocols.push({
+                title: "📞 Final Hiring Push",
+                description: "Personal outreach to all candidates. Offer immediate start bonuses and expedited processing.",
+                critical: false
+            });
+            protocols.push({
+                title: "📚 Emergency Lesson Prep",
+                description: "Prepare simplified lesson plans that any staff member can execute effectively.",
+                critical: false
+            });
+        } else if (daysUntil === 3) {
+            // 3 days left - Increase group sizes
+            protocols.push({
+                title: "📈 Increase Group Numbers",
+                description: "Consolidate smaller classes into larger groups. Adjust classroom capacity and seating arrangements.",
+                critical: false
+            });
+            protocols.push({
+                title: "🎯 Intensive Recruitment",
+                description: "Daily candidate calls, same-day interviews, immediate decision making for qualified candidates.",
+                critical: false
+            });
+            protocols.push({
+                title: "📋 Staff Cross-Training",
+                description: "Brief administrative staff on emergency teaching procedures and classroom management.",
+                critical: false
+            });
+        } else if (daysUntil <= 7) {
+            // 4-7 days left - General emergency measures
+            protocols.push({
+                title: "🚨 All-Platform Recruitment",
+                description: "Post on ALL platforms simultaneously. Increase budget allocation for urgent hiring.",
+                critical: false
+            });
+            protocols.push({
+                title: "💰 Emergency Incentives",
+                description: "Activate sign-on bonuses, referral rewards, and expedited start incentives.",
+                critical: false
+            });
+            protocols.push({
+                title: "📞 Network Activation",
+                description: "Contact personal networks, partner schools, and freelance teacher databases.",
+                critical: false
+            });
+        }
+        
+        return protocols;
     }
 
     getTimeBasedDescription(daysUntil, hiresNeeded) {

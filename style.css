@@ -554,6 +554,54 @@ table tr:hover {
     padding: 15px;
 }
 
+.operational-protocol {
+    margin-top: 15px;
+    padding: 15px;
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+}
+
+.operational-protocol h3 {
+    color: #856404;
+    margin-bottom: 12px;
+    font-size: 1em;
+}
+
+.protocol-step {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: white;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+}
+
+.protocol-step.critical {
+    background: #fff5f5;
+    border-left-color: #e53e3e;
+}
+
+.protocol-step.critical .step-title {
+    color: #c53030;
+    font-weight: bold;
+}
+
+.protocol-step .step-title {
+    font-weight: 600;
+    color: #856404;
+    margin-bottom: 4px;
+}
+
+.protocol-step .step-description {
+    font-size: 0.9em;
+    color: #6b5a00;
+    line-height: 1.4;
+}
+
+.protocol-step.critical .step-description {
+    color: #742a2a;
+}
+
 .live-update {
     animation: pulse 2s ease-in-out infinite;
 }
