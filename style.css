@@ -142,8 +142,9 @@ main {
 .input-group label {
     display: block;
     margin-bottom: 5px;
-    color: #4a5568;
-    font-weight: 500;
+    color: #2d3748;
+    font-weight: 600;
+    font-size: 1.1em;
 }
 
 .input-group input {
@@ -153,6 +154,8 @@ main {
     border-radius: 5px;
     font-size: 16px;
     transition: border-color 0.2s;
+    background: white;
+    color: #2d3748;
 }
 
 .input-group input:focus {
@@ -279,6 +282,8 @@ main {
 .checklist h3 {
     color: #c53030;
     margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .checklist ul {
@@ -291,6 +296,8 @@ main {
     background: white;
     border-radius: 5px;
     border: 1px solid #fc8181;
+    color: #2d3748;
+    font-weight: 500;
 }
 
 .checklist input[type="checkbox"] {
@@ -337,8 +344,9 @@ table tr:hover {
 .import-section label {
     display: block;
     margin-bottom: 8px;
-    color: #4a5568;
-    font-weight: 500;
+    color: #2d3748;
+    font-weight: 600;
+    font-size: 1.1em;
 }
 
 .import-section textarea {
@@ -351,6 +359,9 @@ table tr:hover {
     font-size: 14px;
     resize: vertical;
     margin-bottom: 15px;
+    background: white;
+    color: #2d3748;
+    line-height: 1.5;
 }
 
 .import-section textarea:focus {
@@ -563,9 +574,10 @@ table tr:hover {
 }
 
 .operational-protocol h3 {
-    color: #856404;
+    color: #744210;
     margin-bottom: 12px;
-    font-size: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .protocol-step {
@@ -587,19 +599,22 @@ table tr:hover {
 }
 
 .protocol-step .step-title {
-    font-weight: 600;
-    color: #856404;
+    font-weight: bold;
+    color: #744210;
     margin-bottom: 4px;
+    font-size: 1em;
 }
 
 .protocol-step .step-description {
-    font-size: 0.9em;
-    color: #6b5a00;
-    line-height: 1.4;
+    font-size: 0.95em;
+    color: #553c00;
+    line-height: 1.5;
+    font-weight: 500;
 }
 
 .protocol-step.critical .step-description {
     color: #742a2a;
+    font-weight: 500;
 }
 
 .live-update {
