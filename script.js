@@ -430,7 +430,7 @@ class HiringDashboard {
             // Day of target week - EXTREME measures
             protocols.push({
                 title: "🚨 IMMEDIATE: Deploy Senior Staff",
-                description: "Steven and management team step in to cover critical classes. All administrative duties redirected.",
+                description: "Steven and Mr. Bruce step in to cover critical classes. All administrative duties redirected.",
                 critical: true
             });
             protocols.push({
@@ -447,7 +447,7 @@ class HiringDashboard {
             // 1 day left - Last resort measures
             protocols.push({
                 title: "🚨 CRITICAL: Senior Management Deployment",
-                description: "Steven and yourself prepare to teach tomorrow. Clear all administrative schedules.",
+                description: "Steven and Mr. Bruce prepare to teach tomorrow. Clear all administrative schedules.",
                 critical: true
             });
             protocols.push({
