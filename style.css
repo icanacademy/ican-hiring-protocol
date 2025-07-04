@@ -22,13 +22,34 @@ header {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
-    text-align: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.title-section {
+    text-align: left;
 }
 
 header h1 {
     color: #1e3a8a;
     font-size: 2.8em;
-    margin-bottom: 8px;
+    margin: 0 0 8px 0;
     font-weight: 700;
     letter-spacing: 2px;
 }
@@ -38,6 +59,32 @@ header p {
     font-size: 1.2em;
     font-weight: 500;
     letter-spacing: 0.5px;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .title-section {
+        text-align: center;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    header h1 {
+        font-size: 2.2em;
+    }
+    
+    header p {
+        font-size: 1em;
+    }
 }
 
 main {
